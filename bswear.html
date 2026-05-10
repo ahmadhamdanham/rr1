@@ -1,0 +1,2664 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>B'S WEAR — Stand Out. Live the Edit.</title>
+<meta name="description" content="B's Wear — modern lifestyle apparel for the ambitious. Now with AI Try-On: see yourself in any piece before you buy." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================================
+   B'S WEAR — Editorial Luxury Streetwear Concept
+   Aesthetic: warm-charcoal canvas, cream type, burnt-amber accent
+   ========================================================================= */
+
+:root {
+  /* color */
+  --bg:           #0d0c0a;
+  --bg-2:         #131210;
+  --bg-3:         #1c1a16;
+  --line:         rgba(244, 237, 224, .08);
+  --line-strong:  rgba(244, 237, 224, .16);
+  --cream:        #f4ede0;
+  --cream-dim:    #c9c0ad;
+  --muted:        #8a8275;
+  --accent:       #d97133;        /* burnt amber */
+  --accent-warm:  #e8a679;
+  --accent-deep:  #a85222;
+  --success:      #88b06a;
+
+  /* type */
+  --display: 'Fraunces', 'Tajawal', serif;
+  --body:    'Manrope', 'Tajawal', sans-serif;
+  --mono:    'JetBrains Mono', ui-monospace, monospace;
+
+  /* motion */
+  --ease:    cubic-bezier(.22,.61,.36,1);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}
+
+[data-lang="ar"] {
+  --display: 'Tajawal', 'Fraunces', serif;
+  --body:    'Tajawal', 'Manrope', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--cream);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+[dir="rtl"] body { text-align: right; }
+
+img { display: block; max-width: 100%; height: auto; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+/* paper-grain overlay for warmth */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(244,237,224,.014) 50%, transparent 51%),
+    radial-gradient(1px 1px at 80% 70%, rgba(244,237,224,.012) 50%, transparent 51%);
+  background-size: 3px 3px;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+/* ---------- typography utilities ---------- */
+.display {
+  font-family: var(--display);
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  letter-spacing: -0.025em;
+  line-height: .95;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+  font-weight: 500;
+}
+
+.divider {
+  width: 24px; height: 1px;
+  background: var(--accent);
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 12px;
+}
+
+/* ---------- top utility bar ---------- */
+.utility {
+  background: var(--bg-3);
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: .04em;
+  position: relative; z-index: 50;
+}
+.utility-track {
+  max-width: 1440px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 9px 32px;
+}
+.utility .ticker {
+  display: flex; gap: 32px;
+  color: var(--cream-dim);
+  font-family: var(--mono);
+}
+.utility .ticker span { display: inline-flex; align-items: center; gap: 8px; }
+.utility .ticker .dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
+.utility .lang {
+  display: flex; align-items: center; gap: 0;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .12em;
+}
+.utility .lang button {
+  padding: 4px 10px;
+  color: var(--muted);
+  transition: color .2s var(--ease);
+}
+.utility .lang button.active { color: var(--cream); }
+.utility .lang .sep { color: var(--line-strong); }
+
+/* ---------- nav ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(13, 12, 10, .82);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  max-width: 1440px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  padding: 18px 32px;
+}
+.nav-left, .nav-right {
+  display: flex; align-items: center; gap: 28px;
+  font-size: 13px; letter-spacing: .04em;
+}
+.nav-right { justify-content: flex-end; }
+.nav-link { 
+  position: relative;
+  padding: 6px 0;
+  color: var(--cream-dim);
+  transition: color .25s var(--ease);
+}
+.nav-link::after {
+  content: ""; position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .35s var(--ease);
+}
+.nav-link:hover { color: var(--cream); }
+.nav-link:hover::after { transform: scaleX(1); }
+
+.brand {
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  color: var(--cream);
+  display: flex; align-items: baseline; gap: 4px;
+}
+.brand .apostrophe { color: var(--accent); }
+.brand .reg {
+  font-family: var(--mono); font-size: 9px;
+  vertical-align: top; color: var(--muted);
+  margin-left: 2px;
+}
+
+.icon-btn {
+  width: 36px; height: 36px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: border-color .25s var(--ease), background .25s var(--ease);
+  position: relative;
+}
+.icon-btn:hover { border-color: var(--line-strong); background: var(--bg-2); }
+.icon-btn svg { width: 18px; height: 18px; stroke: currentColor; }
+.icon-btn .badge {
+  position: absolute; top: -2px; right: -2px;
+  background: var(--accent); color: var(--bg);
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  width: 16px; height: 16px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 110px);
+  padding: 60px 32px 80px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-text { position: relative; z-index: 2; }
+.hero-meta {
+  display: flex; align-items: center; gap: 0;
+  margin-bottom: 32px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .14em; color: var(--cream-dim);
+  text-transform: uppercase;
+}
+.hero-meta .pill {
+  background: var(--bg-3); border: 1px solid var(--line-strong);
+  padding: 6px 12px; border-radius: 999px;
+  color: var(--accent-warm);
+  margin-right: 14px;
+}
+
+.hero-headline {
+  font-size: clamp(60px, 9vw, 144px);
+  margin-bottom: 28px;
+}
+.hero-headline .stand {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+  color: var(--accent);
+}
+.hero-headline .out {
+  display: block;
+  letter-spacing: -0.04em;
+}
+.hero-headline .live {
+  font-size: .42em;
+  display: block;
+  margin-top: .35em;
+  color: var(--cream-dim);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 60, "SOFT" 0;
+}
+
+.hero-sub {
+  max-width: 460px;
+  color: var(--cream-dim);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.hero-cta-row {
+  display: flex; align-items: center; gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 28px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: all .35s var(--ease);
+  border: 1px solid transparent;
+  position: relative; overflow: hidden;
+  white-space: nowrap;
+}
+.btn .arrow { transition: transform .35s var(--ease); }
+.btn:hover .arrow { transform: translateX(4px); }
+[dir="rtl"] .btn:hover .arrow { transform: translateX(-4px) rotate(180deg); }
+[dir="rtl"] .btn .arrow { transform: rotate(180deg); }
+
+.btn-primary {
+  background: var(--cream); color: var(--bg);
+}
+.btn-primary:hover { background: var(--accent-warm); transform: translateY(-1px); }
+
+.btn-accent {
+  background: var(--accent); color: var(--bg);
+  box-shadow: 0 0 0 0 rgba(217, 113, 51, .4);
+}
+.btn-accent:hover {
+  background: var(--accent-warm);
+  box-shadow: 0 0 0 8px rgba(217, 113, 51, .15);
+}
+.btn-accent svg { stroke: currentColor; }
+
+.btn-ghost {
+  background: transparent; color: var(--cream);
+  border: 1px solid var(--line-strong);
+}
+.btn-ghost:hover { border-color: var(--cream); background: var(--bg-2); }
+
+/* ---------- hero visual stage ---------- */
+.hero-stage {
+  position: relative;
+  aspect-ratio: 4/5;
+  max-height: 620px;
+  width: 100%;
+  justify-self: end;
+}
+.hero-img-main {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,.6);
+  transform: rotate(-1deg);
+  transition: transform 1.2s var(--ease-out);
+}
+.hero-img-main::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(13,12,10,.5) 100%);
+}
+
+.hero-tag {
+  position: absolute; bottom: 24px; left: 24px;
+  display: flex; align-items: center; gap: 14px;
+  background: rgba(13,12,10,.7);
+  backdrop-filter: blur(12px);
+  padding: 12px 16px 12px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  z-index: 3;
+}
+.hero-tag-thumb {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background-size: cover; background-position: center;
+}
+.hero-tag-info { font-size: 12px; line-height: 1.3; }
+.hero-tag-info strong { display: block; color: var(--cream); font-weight: 500; }
+.hero-tag-info span { color: var(--cream-dim); font-family: var(--mono); font-size: 11px; }
+
+.hero-floater {
+  position: absolute;
+  background: var(--bg-3);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 12px;
+  z-index: 4;
+  backdrop-filter: blur(8px);
+  animation: floatY 6s ease-in-out infinite;
+}
+.hero-floater.tl { top: -20px; left: -28px; max-width: 200px; animation-delay: 0s; }
+.hero-floater.br { bottom: 80px; right: -32px; animation-delay: -3s; }
+.hero-floater .label { 
+  font-family: var(--mono); font-size: 10px; 
+  letter-spacing: .12em; color: var(--accent-warm);
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.hero-floater .value { 
+  font-family: var(--display); font-size: 22px; 
+  color: var(--cream); line-height: 1;
+}
+@keyframes floatY {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero-bg-text {
+  position: absolute; left: -10%; bottom: -8%;
+  font-family: var(--display);
+  font-size: 18vw;
+  font-style: italic;
+  color: rgba(244, 237, 224, .025);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 0;
+  letter-spacing: -0.04em;
+}
+
+/* ---------- marquee ---------- */
+.marquee {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+  overflow: hidden;
+  padding: 22px 0;
+}
+.marquee-track {
+  display: flex; gap: 56px;
+  animation: marquee 40s linear infinite;
+  width: max-content;
+  font-family: var(--display);
+  font-size: 36px;
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 60;
+  color: var(--cream);
+  white-space: nowrap;
+}
+.marquee-track .star { color: var(--accent); font-style: normal; font-family: var(--body); }
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- AI try-on hero feature ---------- */
+.tryon-section {
+  padding: 140px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+}
+.tryon-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+}
+.tryon-copy { max-width: 540px; }
+.tryon-copy .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+.tryon-copy .eyebrow::before {
+  content: "";
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 0 4px rgba(136,176,106,.15);
+  animation: pulse 2s var(--ease) infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 4px rgba(136,176,106,.15); }
+  50% { box-shadow: 0 0 0 7px rgba(136,176,106,.05); }
+}
+
+.tryon-headline {
+  font-size: clamp(44px, 5.4vw, 84px);
+  margin-bottom: 28px;
+  font-family: var(--display);
+  line-height: .98;
+  letter-spacing: -0.025em;
+}
+.tryon-headline em {
+  font-style: italic;
+  color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+}
+
+.tryon-copy p {
+  color: var(--cream-dim);
+  font-size: 17px;
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+
+.tryon-steps {
+  display: flex; gap: 24px;
+  margin-bottom: 36px;
+  font-size: 13px;
+}
+.tryon-step {
+  flex: 1;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-strong);
+}
+.tryon-step .num {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: 12px;
+  margin-bottom: 8px;
+  display: block;
+}
+.tryon-step .label {
+  color: var(--cream);
+  line-height: 1.4;
+}
+
+/* try-on visual showcase */
+.tryon-visual {
+  position: relative;
+  aspect-ratio: 1.1/1;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-2) 100%);
+  border: 1px solid var(--line);
+  padding: 32px;
+  overflow: hidden;
+}
+.tryon-visual::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(217,113,51,.18), transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(232,166,121,.10), transparent 50%);
+  pointer-events: none;
+}
+
+.tryon-cards {
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+
+.tryon-card {
+  background: var(--bg);
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  position: relative;
+  border: 1px solid var(--line-strong);
+}
+.tryon-card.user::after {
+  content: "YOU"; 
+  position: absolute; top: 12px; left: 12px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .12em;
+  background: rgba(13,12,10,.85);
+  color: var(--cream);
+  padding: 4px 8px; border-radius: 4px;
+}
+.tryon-card.result {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 20px 60px -20px rgba(217,113,51,.4);
+}
+.tryon-card.result::after {
+  content: "AI GENERATED"; 
+  position: absolute; top: 12px; left: 12px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .12em;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 4px 8px; border-radius: 4px;
+}
+
+.tryon-card-img {
+  width: 100%; height: 100%;
+  background-size: cover; background-position: center;
+}
+
+.tryon-arrow {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 18px;
+  position: relative;
+}
+.tryon-arrow::before {
+  content: "";
+  position: absolute; inset: -6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(217,113,51,.3);
+  animation: spin 20s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.tryon-product-overlay {
+  position: absolute; bottom: 12px; left: 12px; right: 12px;
+  background: rgba(13,12,10,.85);
+  backdrop-filter: blur(8px);
+  padding: 10px 12px; border-radius: 6px;
+  font-size: 11px; font-family: var(--mono);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.tryon-product-overlay strong { color: var(--cream); font-weight: 500; }
+.tryon-product-overlay span { color: var(--accent-warm); }
+
+/* ---------- featured products ---------- */
+.section {
+  padding: 120px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.section-head {
+  display: flex; justify-content: space-between; align-items: end;
+  margin-bottom: 60px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.section-title {
+  font-family: var(--display);
+  font-size: clamp(40px, 5vw, 72px);
+  letter-spacing: -0.025em;
+  line-height: .95;
+  font-weight: 400;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+}
+.section-head p {
+  max-width: 360px;
+  color: var(--cream-dim);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 24px;
+}
+
+.product-card {
+  position: relative;
+  cursor: pointer;
+}
+.product-img-wrap {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: var(--bg-2);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.product-img {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform 1.2s var(--ease-out);
+}
+.product-card:hover .product-img { transform: scale(1.04); }
+
+.product-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--cream); color: var(--bg);
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 4px 8px; border-radius: 3px;
+  z-index: 2;
+}
+.product-badge.sale { background: var(--accent); color: var(--bg); }
+.product-badge.new { background: var(--bg); color: var(--cream); border: 1px solid var(--line-strong); }
+
+.product-tryon-btn {
+  position: absolute; bottom: 12px; right: 12px;
+  background: rgba(13,12,10,.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line-strong);
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cream);
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .35s var(--ease), transform .35s var(--ease), background .25s var(--ease);
+}
+.product-card:hover .product-tryon-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+.product-tryon-btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+.product-tryon-btn svg { width: 18px; height: 18px; }
+
+.product-quick {
+  position: absolute; bottom: 12px; left: 12px;
+  background: var(--cream); color: var(--bg);
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 8px 14px; border-radius: 999px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .35s var(--ease), transform .35s var(--ease);
+  z-index: 2;
+}
+.product-card:hover .product-quick {
+  opacity: 1; transform: translateY(0);
+}
+
+.product-info {
+  display: flex; justify-content: space-between; align-items: start;
+  font-size: 14px;
+  gap: 12px;
+}
+.product-info-left { flex: 1; min-width: 0; }
+.product-name {
+  color: var(--cream);
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+.product-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.product-price {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--cream);
+  text-align: right;
+  white-space: nowrap;
+}
+.product-price .original {
+  display: block;
+  text-decoration: line-through;
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+.product-price .now { color: var(--accent-warm); }
+
+/* ---------- editorial brand block ---------- */
+.editorial {
+  background: var(--bg-2);
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+  margin-top: 40px;
+}
+.editorial::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(217,113,51,.06), transparent 40%);
+  pointer-events: none;
+}
+.editorial-inner {
+  max-width: 1440px; margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+}
+.editorial-img {
+  aspect-ratio: 3/4;
+  background-size: cover; background-position: center;
+  border-radius: 6px;
+  position: relative;
+}
+.editorial-img::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 60%, rgba(217,113,51,.15));
+  border-radius: 6px;
+}
+.editorial-text { padding: 0 20px; }
+.editorial-text h2 {
+  font-family: var(--display);
+  font-size: clamp(40px, 4.5vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+.editorial-text h2 em {
+  font-style: italic; color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+}
+.editorial-text p {
+  color: var(--cream-dim);
+  font-size: 16px; line-height: 1.7;
+  margin-bottom: 20px;
+}
+.editorial-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line-strong);
+}
+.editorial-stat .num {
+  font-family: var(--display);
+  font-size: 38px;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 6px;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.editorial-stat .num em { color: var(--accent); font-style: italic; }
+.editorial-stat .lbl {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- collections (split tiles) ---------- */
+.collections {
+  padding: 120px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.collection-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 60px;
+}
+.collection-tile {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.collection-tile-img {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform 1.4s var(--ease-out);
+}
+.collection-tile:hover .collection-tile-img { transform: scale(1.05); }
+.collection-tile::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(13,12,10,.85) 100%);
+}
+.collection-tile-content {
+  position: absolute; bottom: 32px; left: 32px; right: 32px;
+  z-index: 2; color: var(--cream);
+}
+.collection-tile-content .eyebrow { margin-bottom: 12px; display: block; }
+.collection-tile-content h3 {
+  font-family: var(--display);
+  font-size: 56px;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+.collection-tile-content h3 em {
+  font-style: italic; color: var(--accent-warm);
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+}
+.collection-tile-content .arrow-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--cream);
+  padding-top: 10px;
+  border-top: 1px solid var(--cream);
+  transition: color .25s var(--ease);
+}
+.collection-tile:hover .arrow-link { color: var(--accent-warm); }
+
+/* ---------- value strip ---------- */
+.values {
+  padding: 80px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+.value-item { display: flex; align-items: start; gap: 16px; }
+.value-icon {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.value-icon svg { width: 20px; height: 20px; }
+.value-text strong {
+  display: block;
+  font-size: 14px; color: var(--cream);
+  margin-bottom: 4px; font-weight: 500;
+}
+.value-text span {
+  font-size: 12px; color: var(--cream-dim);
+  font-family: var(--mono); letter-spacing: .04em;
+}
+
+/* ---------- newsletter ---------- */
+.newsletter {
+  padding: 140px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+  text-align: center;
+}
+.newsletter h2 {
+  font-family: var(--display);
+  font-size: clamp(48px, 6vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+.newsletter h2 em {
+  font-style: italic; color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+}
+.newsletter p {
+  max-width: 480px; margin: 0 auto 40px;
+  color: var(--cream-dim); font-size: 16px;
+}
+.newsletter-form {
+  max-width: 480px; margin: 0 auto;
+  display: flex; gap: 8px;
+  background: var(--bg-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 6px;
+  transition: border-color .25s var(--ease);
+}
+.newsletter-form:focus-within { border-color: var(--accent); }
+.newsletter-form input {
+  flex: 1; background: transparent;
+  border: none; outline: none;
+  color: var(--cream); font: inherit;
+  padding: 12px 18px;
+  font-size: 14px;
+}
+.newsletter-form input::placeholder { color: var(--muted); }
+.newsletter-form button {
+  background: var(--accent); color: var(--bg);
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 500;
+  padding: 12px 22px; border-radius: 999px;
+  transition: background .25s var(--ease);
+}
+.newsletter-form button:hover { background: var(--accent-warm); }
+
+/* ---------- footer ---------- */
+footer {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  padding: 80px 32px 32px;
+}
+.footer-inner {
+  max-width: 1440px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+.footer-brand .brand { font-size: 36px; margin-bottom: 16px; }
+.footer-brand p {
+  color: var(--cream-dim); font-size: 14px;
+  max-width: 280px; line-height: 1.6;
+  margin-bottom: 24px;
+}
+.footer-socials { display: flex; gap: 10px; }
+.footer-socials a {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cream-dim);
+  transition: all .25s var(--ease);
+}
+.footer-socials a:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.footer-socials svg { width: 16px; height: 16px; }
+
+.footer-col h4 {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent-warm); font-weight: 500;
+  margin-bottom: 18px;
+}
+.footer-col a {
+  display: block;
+  font-size: 14px;
+  color: var(--cream-dim);
+  padding: 6px 0;
+  transition: color .2s var(--ease);
+}
+.footer-col a:hover { color: var(--cream); }
+
+.footer-bottom {
+  max-width: 1440px; margin: 0 auto;
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: var(--muted);
+  font-family: var(--mono);
+}
+.footer-mega {
+  font-family: var(--display);
+  font-size: clamp(80px, 18vw, 280px);
+  font-style: italic;
+  text-align: center;
+  line-height: 1;
+  margin: 60px 0 -40px;
+  color: rgba(244, 237, 224, .04);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  letter-spacing: -0.04em;
+  pointer-events: none;
+}
+
+/* =========================================================================
+   AI TRY-ON MODAL
+   ========================================================================= */
+.tryon-modal {
+  position: fixed; inset: 0;
+  background: rgba(13,12,10,.92);
+  backdrop-filter: blur(20px);
+  z-index: 200;
+  display: none;
+  align-items: stretch;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity .35s var(--ease);
+}
+.tryon-modal.open { display: flex; opacity: 1; }
+
+.tryon-modal-shell {
+  width: 100%; max-width: 1280px;
+  max-height: calc(100vh - 48px);
+  margin: auto;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  overflow: hidden;
+  position: relative;
+  transform: translateY(20px) scale(.98);
+  transition: transform .4s var(--ease-out);
+}
+.tryon-modal.open .tryon-modal-shell { transform: translateY(0) scale(1); }
+
+.tryon-modal-close {
+  position: absolute; top: 18px; right: 18px;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: rgba(13,12,10,.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line-strong);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cream);
+  z-index: 10;
+  transition: all .25s var(--ease);
+}
+.tryon-modal-close:hover { background: var(--bg-3); border-color: var(--cream); }
+.tryon-modal-close svg { width: 16px; height: 16px; }
+
+/* left side — preview / result */
+.tryon-modal-preview {
+  background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 600px;
+  padding: 32px;
+}
+.tryon-modal-preview::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(217,113,51,.12), transparent 50%);
+  pointer-events: none;
+}
+
+.preview-frame {
+  width: 100%; max-width: 360px;
+  aspect-ratio: 3/4;
+  background: var(--bg);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--line-strong);
+}
+.preview-frame.has-result {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 30px 80px -20px rgba(217,113,51,.4);
+}
+.preview-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.preview-empty {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  color: var(--muted); text-align: center;
+  padding: 40px;
+}
+.preview-empty svg {
+  width: 56px; height: 56px;
+  color: var(--cream-dim);
+  margin-bottom: 20px;
+  stroke: currentColor; opacity: .4;
+}
+.preview-empty p {
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+
+.preview-loading {
+  position: absolute; inset: 0;
+  background: rgba(13,12,10,.92);
+  backdrop-filter: blur(8px);
+  display: none;
+  flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 5;
+}
+.preview-loading.active { display: flex; }
+.preview-loading-orbit {
+  width: 80px; height: 80px;
+  position: relative;
+  margin-bottom: 24px;
+}
+.preview-loading-orbit::before, .preview-loading-orbit::after {
+  content: ""; position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--accent);
+  border-right-color: var(--accent);
+  animation: spin 1.2s linear infinite;
+}
+.preview-loading-orbit::after {
+  inset: 8px; border-width: 1px;
+  border-top-color: var(--accent-warm); border-right-color: transparent; border-bottom-color: var(--accent-warm);
+  animation: spin 1.8s linear infinite reverse;
+}
+.preview-loading p {
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent-warm);
+  margin-bottom: 8px;
+}
+.preview-loading span {
+  font-size: 12px; color: var(--muted);
+}
+
+.preview-tag {
+  position: absolute; top: 12px; left: 12px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .12em; text-transform: uppercase;
+  background: rgba(13,12,10,.85);
+  color: var(--cream);
+  padding: 4px 8px; border-radius: 4px;
+  z-index: 4;
+}
+.preview-tag.ai { background: var(--accent); color: var(--bg); }
+
+/* right side — controls */
+.tryon-modal-control {
+  padding: 48px 48px 32px;
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+  max-height: calc(100vh - 48px);
+}
+.tryon-modal-header { margin-bottom: 32px; }
+.tryon-modal-header .eyebrow { display: inline-flex; align-items: center; gap: 10px; }
+.tryon-modal-header .eyebrow::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 0 4px rgba(217,113,51,.18);
+}
+.tryon-modal-title {
+  font-family: var(--display);
+  font-size: 40px;
+  line-height: 1; letter-spacing: -0.02em;
+  margin: 14px 0 8px;
+  font-weight: 400;
+}
+.tryon-modal-title em {
+  font-style: italic; color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+}
+.tryon-modal-header p {
+  color: var(--cream-dim); font-size: 14px;
+  line-height: 1.6;
+}
+
+/* steps */
+.steps-progress {
+  display: flex; gap: 8px;
+  margin-bottom: 28px;
+}
+.step-bar {
+  flex: 1; height: 3px;
+  background: var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.step-bar::after {
+  content: ""; position: absolute; inset: 0;
+  background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .5s var(--ease);
+}
+.step-bar.done::after { transform: scaleX(1); }
+.step-bar.active::after {
+  transform: scaleX(.5);
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.step-section { display: none; flex-direction: column; gap: 20px; }
+.step-section.active { display: flex; }
+
+.step-label {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent-warm);
+}
+.step-question {
+  font-family: var(--display);
+  font-size: 22px; line-height: 1.2;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.step-help {
+  color: var(--cream-dim); font-size: 13px;
+  line-height: 1.6;
+}
+
+/* upload zone */
+.upload-zone {
+  border: 1.5px dashed var(--line-strong);
+  border-radius: 8px;
+  padding: 36px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .3s var(--ease);
+  background: var(--bg-2);
+  position: relative;
+}
+.upload-zone:hover, .upload-zone.dragover {
+  border-color: var(--accent);
+  background: rgba(217,113,51,.05);
+}
+.upload-zone svg {
+  width: 36px; height: 36px;
+  color: var(--accent);
+  margin: 0 auto 14px;
+  display: block; stroke: currentColor;
+}
+.upload-zone strong {
+  display: block;
+  color: var(--cream);
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+.upload-zone span {
+  display: block;
+  color: var(--muted);
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .04em;
+}
+.upload-zone input[type="file"] { display: none; }
+
+.upload-tips {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  font-size: 12px;
+}
+.upload-tip {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: start;
+}
+.upload-tip .check {
+  color: var(--success); flex-shrink: 0; margin-top: 1px;
+}
+.upload-tip .check svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; }
+.upload-tip span { color: var(--cream-dim); line-height: 1.4; }
+
+/* product picker */
+.product-picker {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.product-picker::-webkit-scrollbar { width: 4px; }
+.product-picker::-webkit-scrollbar-track { background: var(--bg-2); }
+.product-picker::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 2px; }
+
+.picker-card {
+  position: relative;
+  aspect-ratio: 3/4;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all .25s var(--ease);
+  background-size: cover; background-position: center;
+}
+.picker-card::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(13,12,10,.9));
+}
+.picker-card:hover { transform: translateY(-2px); }
+.picker-card.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.picker-card.selected::before {
+  content: "✓"; position: absolute;
+  top: 8px; right: 8px;
+  width: 22px; height: 22px;
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: bold;
+  z-index: 2;
+}
+.picker-card-label {
+  position: absolute; bottom: 8px; left: 8px; right: 8px;
+  font-size: 11px; color: var(--cream);
+  font-weight: 500; z-index: 2;
+  line-height: 1.2;
+}
+.picker-card-label span {
+  display: block;
+  font-family: var(--mono); font-size: 10px;
+  color: var(--accent-warm); margin-top: 2px;
+}
+
+/* generate / actions */
+.tryon-actions {
+  margin-top: auto; padding-top: 28px;
+  border-top: 1px solid var(--line);
+  display: flex; gap: 12px; align-items: center;
+}
+.tryon-actions .btn { flex: 1; justify-content: center; }
+.tryon-actions .btn-back {
+  background: transparent; color: var(--cream-dim);
+  border: 1px solid var(--line-strong);
+  flex: 0;
+}
+.tryon-actions .btn-back:hover { color: var(--cream); border-color: var(--cream); }
+
+.result-actions { 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+.result-summary {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 14px;
+}
+.result-summary-thumb {
+  width: 52px; height: 52px;
+  background-size: cover; background-position: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.result-summary-info { flex: 1; }
+.result-summary-info strong {
+  display: block;
+  color: var(--cream); font-size: 14px;
+  margin-bottom: 2px;
+}
+.result-summary-info span {
+  color: var(--cream-dim); font-size: 12px;
+  font-family: var(--mono);
+}
+.result-summary-price {
+  font-family: var(--mono);
+  color: var(--accent-warm);
+  font-size: 16px;
+}
+
+/* floating try-on FAB */
+.fab {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 14px 22px 14px 16px;
+  border-radius: 999px;
+  box-shadow: 0 12px 32px -6px rgba(217,113,51,.5), 0 0 0 6px rgba(217,113,51,.12);
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 600;
+  z-index: 30;
+  transition: all .3s var(--ease);
+  cursor: pointer;
+}
+.fab:hover {
+  transform: translateY(-2px);
+  background: var(--accent-warm);
+}
+.fab svg { width: 18px; height: 18px; stroke: currentColor; }
+[dir="rtl"] .fab { right: auto; left: 28px; }
+
+/* responsive */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; gap: 60px; padding: 40px 24px 60px; }
+  .hero-stage { max-height: 480px; max-width: 420px; margin: 0 auto; }
+  .tryon-grid { grid-template-columns: 1fr; gap: 60px; }
+  .editorial-inner { grid-template-columns: 1fr; gap: 60px; }
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .tryon-modal-shell { grid-template-columns: 1fr; max-height: calc(100vh - 24px); }
+  .tryon-modal-preview { min-height: 420px; padding: 24px; }
+  .tryon-modal-control { padding: 32px 28px 24px; }
+  .nav-left { display: none; }
+}
+
+@media (max-width: 720px) {
+  .utility-track { padding: 9px 18px; flex-wrap: wrap; gap: 10px; }
+  .utility .ticker { gap: 16px; font-size: 10px; }
+  .utility .ticker span:nth-child(n+3) { display: none; }
+  .nav-inner { padding: 16px 18px; grid-template-columns: auto 1fr auto; }
+  .nav-right { gap: 12px; }
+  .hero { padding: 32px 18px 50px; }
+  .hero-headline { font-size: 64px; }
+  .section, .tryon-section, .collections, .newsletter { padding: 80px 18px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 14px; }
+  .collection-grid { grid-template-columns: 1fr; }
+  .collection-tile-content h3 { font-size: 38px; }
+  .editorial { padding: 80px 0; }
+  .editorial-inner { padding: 0 18px; }
+  .editorial-stats { grid-template-columns: 1fr; }
+  .values { grid-template-columns: 1fr 1fr; gap: 24px; padding: 50px 18px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 12px; padding: 24px 18px 0; text-align: center; }
+  .marquee-track { font-size: 24px; gap: 36px; }
+  .hero-floater { display: none; }
+  .hero-bg-text { font-size: 28vw; }
+  .product-picker { grid-template-columns: repeat(2, 1fr); }
+  .upload-tips { grid-template-columns: 1fr; }
+  .fab { bottom: 18px; right: 18px; padding: 12px 18px 12px 14px; font-size: 11px; }
+  [dir="rtl"] .fab { left: 18px; }
+  .tryon-actions { flex-direction: column; }
+  .tryon-actions .btn { width: 100%; }
+}
+
+/* fade-in stagger */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+.fade-in.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     UTILITY BAR
+============================================================ -->
+<div class="utility">
+  <div class="utility-track">
+    <div class="ticker">
+      <span><span class="dot"></span><span data-i18n="util.delivery">FREE DELIVERY OVER 30 JD</span></span>
+      <span><span class="dot"></span><span data-i18n="util.cod">CASH ON DELIVERY</span></span>
+      <span><span class="dot"></span><span data-i18n="util.ship">SHIP ACROSS JORDAN</span></span>
+    </div>
+    <div class="lang">
+      <button class="lang-btn active" data-lang-set="en">EN</button>
+      <span class="sep">/</span>
+      <button class="lang-btn" data-lang-set="ar">العربية</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     NAV
+============================================================ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="#" class="nav-link" data-i18n="nav.shop">Shop</a>
+      <a href="#products" class="nav-link" data-i18n="nav.collections">Collections</a>
+      <a href="#tryon" class="nav-link" data-i18n="nav.tryon">AI Try-On</a>
+      <a href="#about" class="nav-link" data-i18n="nav.about">About</a>
+    </div>
+    <a href="#" class="brand">B<span class="apostrophe">'</span>S WEAR<span class="reg">®</span></a>
+    <div class="nav-right">
+      <a href="#" class="nav-link" data-i18n="nav.contact">Contact</a>
+      <button class="icon-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 7h14l-1.5 11a2 2 0 0 1-2 1.7H8.5a2 2 0 0 1-2-1.7L5 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+        <span class="badge">2</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero">
+  <div class="hero-bg-text">B'S WEAR</div>
+
+  <div class="hero-text fade-in">
+    <div class="hero-meta">
+      <span class="pill" data-i18n="hero.pill">SS '26 — NEW DROP</span>
+      <span data-i18n="hero.live">LIVE NOW</span>
+    </div>
+
+    <h1 class="display hero-headline">
+      <span class="stand" data-i18n="hero.stand">Stand</span>
+      <span class="out" data-i18n="hero.out">out.</span>
+      <span class="live" data-i18n="hero.tag">Live the edit, not the trend.</span>
+    </h1>
+
+    <p class="hero-sub" data-i18n="hero.sub">
+      A modern lifestyle label for the ambitious. Smart-casual essentials and activewear, crafted to elevate confidence and live anywhere life takes you.
+    </p>
+
+    <div class="hero-cta-row">
+      <a href="#products" class="btn btn-primary">
+        <span data-i18n="hero.cta1">Shop the drop</span>
+        <span class="arrow">→</span>
+      </a>
+      <a href="#tryon" class="btn btn-accent">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 2v3M15 2v3M3 9h18"/>
+          <rect x="3" y="5" width="18" height="16" rx="2"/>
+          <path d="M8 14l3-3 2 2 3-3"/>
+        </svg>
+        <span data-i18n="hero.cta2">Try with AI</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stage fade-in" style="transition-delay: .25s">
+    <div class="hero-floater tl">
+      <div class="label" data-i18n="hero.float1">Bestseller</div>
+      <div class="value">+482%</div>
+    </div>
+
+    <div class="hero-img-main" data-placeholder='{"title":"Drop 04.","subtitle":"SS \u002726","idx":0,"tone":"amber","big":true}'></div>
+
+    <div class="hero-floater br">
+      <div class="label" data-i18n="hero.float2">AI Try-On</div>
+      <div class="value">2.8s</div>
+    </div>
+
+    <div class="hero-tag">
+      <div class="hero-tag-thumb" data-product-thumb="bmw-jacket"></div>
+      <div class="hero-tag-info">
+        <strong>BMW Racing Jacket</strong>
+        <span>19.000 JD · 50% OFF</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MARQUEE
+============================================================ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span data-i18n="marquee">Stand Out</span><span class="star">✦</span>
+    <span data-i18n="marquee">Stand Out</span><span class="star">✦</span>
+    <span data-i18n="marquee">Stand Out</span><span class="star">✦</span>
+    <span data-i18n="marquee">Stand Out</span><span class="star">✦</span>
+    <span data-i18n="marquee">Stand Out</span><span class="star">✦</span>
+    <span data-i18n="marquee">Stand Out</span><span class="star">✦</span>
+    <span data-i18n="marquee">Stand Out</span><span class="star">✦</span>
+    <span data-i18n="marquee">Stand Out</span><span class="star">✦</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     AI TRY-ON FEATURE BLOCK
+============================================================ -->
+<section class="tryon-section" id="tryon">
+  <div class="tryon-grid">
+    <div class="tryon-copy fade-in">
+      <span class="eyebrow" data-i18n="tryon.eyebrow">Powered by AI · Industry first</span>
+      <h2 class="tryon-headline">
+        <span data-i18n="tryon.head1">See it on you</span><br>
+        <em data-i18n="tryon.head2">before you buy.</em>
+      </h2>
+      <p data-i18n="tryon.body">
+        Upload a photo of yourself, pick any piece from our catalog, and our AI generates a photorealistic preview of you wearing it — in seconds. No fitting room. No guesswork. Just confidence.
+      </p>
+
+      <div class="tryon-steps">
+        <div class="tryon-step">
+          <span class="num">01</span>
+          <span class="label" data-i18n="tryon.step1">Upload your photo</span>
+        </div>
+        <div class="tryon-step">
+          <span class="num">02</span>
+          <span class="label" data-i18n="tryon.step2">Choose a piece</span>
+        </div>
+        <div class="tryon-step">
+          <span class="num">03</span>
+          <span class="label" data-i18n="tryon.step3">See yourself styled</span>
+        </div>
+      </div>
+
+      <button class="btn btn-accent" onclick="openTryOn()">
+        <span data-i18n="tryon.cta">Launch Try-On</span>
+        <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <div class="tryon-visual fade-in" style="transition-delay: .2s">
+      <div class="tryon-cards">
+        <div class="tryon-card user">
+          <div class="tryon-card-img" data-user-portrait></div>
+        </div>
+        <div class="tryon-arrow">AI</div>
+        <div class="tryon-card result">
+          <div class="tryon-card-img" data-product-thumb="zipup-polo"></div>
+          <div class="tryon-product-overlay">
+            <strong>Zip-up Polo</strong>
+            <span>24.000 JD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURED PRODUCTS
+============================================================ -->
+<section class="section" id="products">
+  <div class="section-head fade-in">
+    <h2 class="section-title">
+      <em data-i18n="products.title1">Top</em>
+      <span data-i18n="products.title2">rated edit.</span>
+    </h2>
+    <p data-i18n="products.sub">Hand-picked pieces from the current drop. Hover any item to try it on with AI.</p>
+  </div>
+
+  <div class="product-grid" id="product-grid"></div>
+
+  <div style="text-align: center; margin-top: 60px;">
+    <a href="#" class="btn btn-ghost">
+      <span data-i18n="products.viewall">View entire collection</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================
+     EDITORIAL BRAND BLOCK
+============================================================ -->
+<section class="editorial" id="about">
+  <div class="editorial-inner">
+    <div class="editorial-img fade-in" data-placeholder='{"title":"The Edit.","subtitle":"Brand","idx":99,"tone":"earth","big":true}'></div>
+    <div class="editorial-text fade-in" style="transition-delay: .2s">
+      <span class="eyebrow" data-i18n="about.eyebrow">— About B's Wear</span>
+      <h2 style="margin-top: 18px;">
+        <span data-i18n="about.head1">Not just worn.</span><br>
+        <em data-i18n="about.head2">Lived.</em>
+      </h2>
+      <p data-i18n="about.body1">
+        B's Wear is a modern, online lifestyle brand offering stylish activewear and smart-casual clothing for young, ambitious individuals. Beyond the cloth, we represent a community — a space where elegance meets performance.
+      </p>
+      <p data-i18n="about.body2">
+        Every piece is engineered to elevate confidence, communicate status, and empower you to navigate life with effortless style.
+      </p>
+      <div class="editorial-stats">
+        <div class="editorial-stat">
+          <div class="num"><em>12K</em>+</div>
+          <div class="lbl" data-i18n="about.stat1">Members</div>
+        </div>
+        <div class="editorial-stat">
+          <div class="num"><em>48</em></div>
+          <div class="lbl" data-i18n="about.stat2">Drops</div>
+        </div>
+        <div class="editorial-stat">
+          <div class="num">4.9<em>★</em></div>
+          <div class="lbl" data-i18n="about.stat3">Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COLLECTIONS
+============================================================ -->
+<section class="collections">
+  <div class="section-head fade-in">
+    <h2 class="section-title">
+      <span data-i18n="coll.title1">Two seasons,</span>
+      <em data-i18n="coll.title2">one identity.</em>
+    </h2>
+    <p data-i18n="coll.sub">Year-round wardrobes engineered for the city and beyond.</p>
+  </div>
+  <div class="collection-grid">
+    <div class="collection-tile fade-in">
+      <div class="collection-tile-img" data-placeholder='{"title":"Summer.","subtitle":"Drop 03","idx":3,"tone":"amber","big":true}'></div>
+      <div class="collection-tile-content">
+        <span class="eyebrow" data-i18n="coll.summer.eyebrow">Drop 03 / Summer</span>
+        <h3>
+          <span data-i18n="coll.summer.title1">Sun</span>
+          <em data-i18n="coll.summer.title2">soaked.</em>
+        </h3>
+        <a href="#" class="arrow-link">
+          <span data-i18n="coll.summer.cta">Shop summer</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    <div class="collection-tile fade-in" style="transition-delay: .15s">
+      <div class="collection-tile-img" data-placeholder='{"title":"Winter.","subtitle":"Drop 04","idx":4,"tone":"cool","big":true}'></div>
+      <div class="collection-tile-content">
+        <span class="eyebrow" data-i18n="coll.winter.eyebrow">Drop 04 / Winter</span>
+        <h3>
+          <span data-i18n="coll.winter.title1">Cold</span>
+          <em data-i18n="coll.winter.title2">silhouette.</em>
+        </h3>
+        <a href="#" class="arrow-link">
+          <span data-i18n="coll.winter.cta">Shop winter</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VALUES STRIP
+============================================================ -->
+<section class="values">
+  <div class="value-item">
+    <div class="value-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 7h13l3 5h2v5h-3"/><path d="M3 7v10h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+    </div>
+    <div class="value-text">
+      <strong data-i18n="val.1.t">Free Delivery</strong>
+      <span data-i18n="val.1.s">On orders over 30 JD</span>
+    </div>
+  </div>
+  <div class="value-item">
+    <div class="value-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20"/></svg>
+    </div>
+    <div class="value-text">
+      <strong data-i18n="val.2.t">Cash on Delivery</strong>
+      <span data-i18n="val.2.s">Pay when it arrives</span>
+    </div>
+  </div>
+  <div class="value-item">
+    <div class="value-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 12a9 9 0 1 1-3.5-7.1"/><path d="m22 4-9 9-3-3"/></svg>
+    </div>
+    <div class="value-text">
+      <strong data-i18n="val.3.t">7-Day Returns</strong>
+      <span data-i18n="val.3.s">Easy exchange policy</span>
+    </div>
+  </div>
+  <div class="value-item">
+    <div class="value-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M9 2v3M15 2v3M3 9h18"/><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 14l3-3 2 2 3-3"/></svg>
+    </div>
+    <div class="value-text">
+      <strong data-i18n="val.4.t">AI Try-On</strong>
+      <span data-i18n="val.4.s">See before you buy</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     NEWSLETTER
+============================================================ -->
+<section class="newsletter">
+  <div class="fade-in">
+    <h2>
+      <span data-i18n="news.head1">Join the</span>
+      <em data-i18n="news.head2">exclusive club.</em>
+    </h2>
+    <p data-i18n="news.sub">Early drops. Member pricing. AI Try-On previews. Once a month, never spam.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('input').value=''; alert('Welcome to the club ✦');">
+      <input type="email" placeholder="your@email.com" required data-i18n-placeholder="news.placeholder" />
+      <button type="submit" data-i18n="news.cta">Join</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-mega">B'S WEAR</div>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand">B<span class="apostrophe">'</span>S WEAR<span class="reg">®</span></div>
+      <p data-i18n="foot.brand">Modern lifestyle apparel for the ambitious. Crafted in spirit, engineered for movement.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/bswearofficial" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+        </a>
+        <a href="https://www.facebook.com" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h-2c-.6 0-1 .4-1 1v3H8v3h3v7h3v-7h2.5l.5-3H14v-2.5c0-.3.2-.5.5-.5H17V6h-2c-1.7 0-3 1.3-3 3"/></svg>
+        </a>
+        <a href="https://wa.me/962775950626" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.5A9 9 0 1 1 21 12z"/><path d="M9 9c0 4 4 7 7 7l1.5-1.5-2-1.5-1 1c-1.5-.5-2.5-1.5-3-3l1-1L11 8 9.5 9.5A1 1 0 0 0 9 9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.shop">Shop</h4>
+      <a href="#" data-i18n="foot.shop.1">All products</a>
+      <a href="#" data-i18n="foot.shop.2">Summer collection</a>
+      <a href="#" data-i18n="foot.shop.3">Winter collection</a>
+      <a href="#" data-i18n="foot.shop.4">Sale</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.help">Help</h4>
+      <a href="#" data-i18n="foot.help.1">Shipping & delivery</a>
+      <a href="#" data-i18n="foot.help.2">Returns & exchanges</a>
+      <a href="#" data-i18n="foot.help.3">Size guide</a>
+      <a href="#" data-i18n="foot.help.4">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.club">Club</h4>
+      <a href="#" data-i18n="foot.club.1">About B's Wear</a>
+      <a href="#" data-i18n="foot.club.2">AI Try-On</a>
+      <a href="#" data-i18n="foot.club.3">Contact</a>
+      <a href="#" data-i18n="foot.club.4">Press</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 B's Wear. <span data-i18n="foot.rights">All rights reserved.</span></span>
+    <span data-i18n="foot.crafted">Crafted in Amman · Worn worldwide</span>
+  </div>
+</footer>
+
+<!-- ============================================================
+     FLOATING TRY-ON FAB
+============================================================ -->
+<button class="fab" onclick="openTryOn()">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 2v3M15 2v3M3 9h18"/>
+    <rect x="3" y="5" width="18" height="16" rx="2"/>
+    <path d="M8 14l3-3 2 2 3-3"/>
+  </svg>
+  <span data-i18n="fab">Try with AI</span>
+</button>
+
+<!-- ============================================================
+     AI TRY-ON MODAL
+============================================================ -->
+<div class="tryon-modal" id="tryonModal" role="dialog" aria-modal="true">
+  <div class="tryon-modal-shell">
+    <button class="tryon-modal-close" onclick="closeTryOn()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+
+    <!-- left: live preview -->
+    <div class="tryon-modal-preview">
+      <div class="preview-frame" id="previewFrame">
+        <div class="preview-empty" id="previewEmpty">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+            <circle cx="12" cy="9" r="4"/>
+            <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+          </svg>
+          <p data-i18n="modal.preview.empty">Your preview will appear here</p>
+        </div>
+        <img class="preview-img" id="previewImg" style="display:none" alt="Try-on preview">
+        <div class="preview-tag" id="previewTag" style="display:none">YOU</div>
+        <div class="preview-loading" id="previewLoading">
+          <div class="preview-loading-orbit"></div>
+          <p data-i18n="modal.loading">Generating your look</p>
+          <span data-i18n="modal.loading.sub">This usually takes 2-5 seconds</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- right: controls -->
+    <div class="tryon-modal-control">
+      <div class="tryon-modal-header">
+        <span class="eyebrow" data-i18n="modal.eyebrow">AI Try-On · Beta</span>
+        <h3 class="tryon-modal-title">
+          <span data-i18n="modal.title1">Try it on</span>
+          <em data-i18n="modal.title2">virtually.</em>
+        </h3>
+        <p data-i18n="modal.sub">Three quick steps to see yourself in any B's Wear piece.</p>
+      </div>
+
+      <div class="steps-progress">
+        <div class="step-bar active" id="bar1"></div>
+        <div class="step-bar" id="bar2"></div>
+        <div class="step-bar" id="bar3"></div>
+      </div>
+
+      <!-- step 1: upload -->
+      <div class="step-section active" id="step1">
+        <div>
+          <span class="step-label" data-i18n="modal.s1.label">Step 01</span>
+          <h4 class="step-question" data-i18n="modal.s1.q">Upload a clear photo of yourself</h4>
+          <p class="step-help" data-i18n="modal.s1.h">A front-facing photo with good lighting works best. Your image is processed securely and never shared.</p>
+        </div>
+
+        <label class="upload-zone" id="uploadZone">
+          <input type="file" accept="image/*" id="userPhoto" />
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <path d="M17 8l-5-5-5 5"/>
+            <path d="M12 3v12"/>
+          </svg>
+          <strong data-i18n="modal.upload.title">Drop your photo here or click to browse</strong>
+          <span data-i18n="modal.upload.sub">JPG, PNG · max 10MB</span>
+        </label>
+
+        <div class="upload-tips">
+          <div class="upload-tip">
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span data-i18n="modal.tip1">Face camera, full upper body</span>
+          </div>
+          <div class="upload-tip">
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span data-i18n="modal.tip2">Plain background preferred</span>
+          </div>
+          <div class="upload-tip">
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span data-i18n="modal.tip3">Natural daylight is best</span>
+          </div>
+          <div class="upload-tip">
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span data-i18n="modal.tip4">Wear fitted clothing</span>
+          </div>
+        </div>
+
+        <div class="tryon-actions">
+          <button class="btn btn-ghost btn-back" disabled style="opacity:.4">
+            <span>←</span>
+          </button>
+          <button class="btn btn-accent" id="step1Next" disabled style="opacity:.5; pointer-events:none">
+            <span data-i18n="modal.next">Continue</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- step 2: choose product -->
+      <div class="step-section" id="step2">
+        <div>
+          <span class="step-label" data-i18n="modal.s2.label">Step 02</span>
+          <h4 class="step-question" data-i18n="modal.s2.q">Pick a piece to try on</h4>
+          <p class="step-help" data-i18n="modal.s2.h">Browse the current drop. You can change selection at any time.</p>
+        </div>
+
+        <div class="product-picker" id="productPicker"></div>
+
+        <div class="tryon-actions">
+          <button class="btn btn-ghost btn-back" onclick="goToStep(1)">
+            <span>←</span>
+          </button>
+          <button class="btn btn-accent" id="step2Next" disabled style="opacity:.5; pointer-events:none" onclick="generateTryOnResult()">
+            <span data-i18n="modal.generate">Generate look</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- step 3: result -->
+      <div class="step-section" id="step3">
+        <div>
+          <span class="step-label" data-i18n="modal.s3.label">Step 03 · Result</span>
+          <h4 class="step-question" data-i18n="modal.s3.q">Looks good on you ✦</h4>
+          <p class="step-help" data-i18n="modal.s3.h">Generated by AI. Actual fit may vary slightly. Add to cart or try a different piece.</p>
+        </div>
+
+        <div class="result-summary" id="resultSummary"></div>
+
+        <div class="result-actions">
+          <button class="btn btn-ghost" onclick="goToStep(2)">
+            <span data-i18n="modal.tryanother">Try another</span>
+          </button>
+          <button class="btn btn-accent" onclick="addToCartFromTryOn()">
+            <span data-i18n="modal.addcart">Add to cart</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   IMAGE PLACEHOLDER GENERATOR
+   --------------------------------------------------------------------------
+   Generates editorial-magazine-style SVG placeholders that work 100% offline.
+   
+   ⚠️  TO USE YOUR REAL PRODUCT PHOTOS:
+   Just set the `image` field in the products array (below) to a URL that's
+   either (a) hosted on the SAME domain as this website, or (b) on a CDN
+   that allows hotlinking (Cloudinary, ImgBB, Imgur, etc.).
+   
+   The Shopify CDN at bsjackets.com/cdn blocks hotlinking, so images won't
+   load if you open this file as a standalone preview. They WILL load once
+   you upload this file to your Shopify theme (same origin = allowed).
+   
+   For external hosting, recommended free options:
+     • Cloudinary  → cloudinary.com (free 25GB, transforms images on the fly)
+     • ImgBB       → imgbb.com (one-click upload, direct image URLs)
+     • Imgur       → imgur.com (free, reliable hotlinking)
+   ========================================================================= */
+function placeholderSVG({ title = '', subtitle = '', idx = 1, tone = 'warm', big = false }) {
+  const palettes = {
+    warm:    ['#1f1a13', '#2a1f15', '#d97133'],
+    cool:    ['#13141a', '#1a1c22', '#d97133'],
+    deep:    ['#0f0c08', '#1a140e', '#e8a679'],
+    amber:   ['#2a1810', '#3a1f15', '#e8a679'],
+    cream:   ['#1c1a16', '#262320', '#d97133'],
+    earth:   ['#1a1612', '#241e18', '#a85222']
+  };
+  const [c1, c2, accent] = palettes[tone] || palettes.warm;
+  const num = String(idx).padStart(2, '0');
+  const titleSize = big ? 84 : 58;
+  const titleY = big ? 460 : 510;
+  
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="bg-${idx}" x1="0%" y1="0%" x2="60%" y2="100%">
+        <stop offset="0%" stop-color="${c1}"/>
+        <stop offset="100%" stop-color="${c2}"/>
+      </linearGradient>
+      <radialGradient id="glow-${idx}" cx="25%" cy="20%" r="70%">
+        <stop offset="0%" stop-color="${accent}" stop-opacity="0.22"/>
+        <stop offset="100%" stop-color="${accent}" stop-opacity="0"/>
+      </radialGradient>
+      <pattern id="grain-${idx}" width="3" height="3" patternUnits="userSpaceOnUse">
+        <rect width="3" height="3" fill="${accent}" fill-opacity="0.015"/>
+      </pattern>
+    </defs>
+    <rect width="600" height="800" fill="url(#bg-${idx})"/>
+    <rect width="600" height="800" fill="url(#glow-${idx})"/>
+    <rect width="600" height="800" fill="url(#grain-${idx})"/>
+    <text x="568" y="190" text-anchor="end" font-family="Georgia, 'Times New Roman', serif" font-size="220" font-style="italic" font-weight="300" fill="${accent}" fill-opacity="0.10">${num}</text>
+    <text x="40" y="58" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" letter-spacing="3" fill="${accent}">— ${subtitle.toUpperCase()}</text>
+    <text x="40" y="${titleY}" font-family="Georgia, 'Times New Roman', serif" font-size="${titleSize}" font-style="italic" font-weight="400" fill="#f4ede0">${title}</text>
+    <line x1="40" y1="${titleY + 36}" x2="124" y2="${titleY + 36}" stroke="${accent}" stroke-width="2"/>
+    <text x="40" y="750" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="10" letter-spacing="4" fill="#8a8275">B'S WEAR · STAND OUT</text>
+    <circle cx="540" cy="746" r="2.5" fill="${accent}"/>
+    <circle cx="552" cy="746" r="2" fill="#8a8275" fill-opacity="0.6"/>
+    <circle cx="562" cy="746" r="2" fill="#8a8275" fill-opacity="0.6"/>
+  </svg>`;
+  return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg.replace(/\s+/g, ' ').trim());
+}
+
+/* =========================================================================
+   PRODUCT CATALOG
+   pulled from B's Wear current Shopify catalog
+   👉 To swap in real photos: replace `image` field with your URL.
+   ========================================================================= */
+const products = [
+  {
+    id: 'henley-tshirt',
+    name: { en: 'Henley T-Shirt', ar: 'تيشيرت هينلي' },
+    type: { en: 'Essential Tee', ar: 'تيشيرت أساسي' },
+    price: 14, originalPrice: null, badge: 'NEW',
+    image: placeholderSVG({ title: 'Henley.', subtitle: 'Essential', idx: 1, tone: 'cream' })
+  },
+  {
+    id: 'zipup-polo',
+    name: { en: 'Zip-up Polo', ar: 'بولو سحاب' },
+    type: { en: 'Smart Casual', ar: 'سمارت كاجوال' },
+    price: 24, originalPrice: null, badge: 'TOP',
+    image: placeholderSVG({ title: 'Zip-up.', subtitle: 'Smart Casual', idx: 2, tone: 'warm' })
+  },
+  {
+    id: 'textured-polo',
+    name: { en: 'Textured Polo', ar: 'بولو مزخرف' },
+    type: { en: 'Heritage', ar: 'هيريتاج' },
+    price: 22, originalPrice: null, badge: null,
+    image: placeholderSVG({ title: 'Textured.', subtitle: 'Heritage', idx: 3, tone: 'earth' })
+  },
+  {
+    id: 'classic-polo',
+    name: { en: 'Classic Polo', ar: 'بولو كلاسيك' },
+    type: { en: 'Essential', ar: 'أساسي' },
+    price: 24, originalPrice: null, badge: null,
+    image: placeholderSVG({ title: 'Classic.', subtitle: 'Essential', idx: 4, tone: 'deep' })
+  },
+  {
+    id: 'bmw-jacket',
+    name: { en: 'BMW Racing Jacket', ar: 'جاكيت BMW راسينج' },
+    type: { en: 'Statement', ar: 'قطعة مميزة' },
+    price: 19, originalPrice: 38, badge: 'SALE',
+    image: placeholderSVG({ title: 'Racing.', subtitle: 'Statement', idx: 5, tone: 'amber' })
+  },
+  {
+    id: 'adidas-shirt',
+    name: { en: 'Adidas Shirt', ar: 'قميص أديداس' },
+    type: { en: 'Vintage', ar: 'فينتاج' },
+    price: 7.5, originalPrice: 15, badge: 'SALE',
+    image: placeholderSVG({ title: 'Vintage.', subtitle: 'Athletic', idx: 6, tone: 'cool' })
+  },
+  {
+    id: 'classic-shirt',
+    name: { en: 'Classic Shirt', ar: 'قميص كلاسيك' },
+    type: { en: 'Essential', ar: 'أساسي' },
+    price: 5, originalPrice: 21, badge: 'SALE',
+    image: placeholderSVG({ title: 'Shirt.', subtitle: 'Essential', idx: 7, tone: 'warm' })
+  },
+  {
+    id: 'shorts',
+    name: { en: 'Performance Shorts', ar: 'شورت رياضي' },
+    type: { en: 'Active', ar: 'نشاط' },
+    price: 7, originalPrice: null, badge: null,
+    image: placeholderSVG({ title: 'Shorts.', subtitle: 'Active', idx: 8, tone: 'cream' })
+  }
+];
+
+/* =========================================================================
+   I18N — bilingual content map
+   ========================================================================= */
+const i18n = {
+  en: {
+    'util.delivery': 'FREE DELIVERY OVER 30 JD',
+    'util.cod': 'CASH ON DELIVERY',
+    'util.ship': 'SHIP ACROSS JORDAN',
+    'nav.shop': 'Shop', 'nav.collections': 'Collections', 'nav.tryon': 'AI Try-On',
+    'nav.about': 'About', 'nav.contact': 'Contact',
+    'hero.pill': "SS '26 — NEW DROP", 'hero.live': 'LIVE NOW',
+    'hero.stand': 'Stand', 'hero.out': 'out.',
+    'hero.tag': 'Live the edit, not the trend.',
+    'hero.sub': 'A modern lifestyle label for the ambitious. Smart-casual essentials and activewear, crafted to elevate confidence and live anywhere life takes you.',
+    'hero.cta1': 'Shop the drop', 'hero.cta2': 'Try with AI',
+    'hero.float1': 'Bestseller', 'hero.float2': 'AI Try-On',
+    'marquee': 'Stand Out',
+    'tryon.eyebrow': 'Powered by AI · Industry first',
+    'tryon.head1': 'See it on you', 'tryon.head2': 'before you buy.',
+    'tryon.body': 'Upload a photo of yourself, pick any piece from our catalog, and our AI generates a photorealistic preview of you wearing it — in seconds. No fitting room. No guesswork. Just confidence.',
+    'tryon.step1': 'Upload your photo', 'tryon.step2': 'Choose a piece', 'tryon.step3': 'See yourself styled',
+    'tryon.cta': 'Launch Try-On',
+    'products.title1': 'Top', 'products.title2': 'rated edit.',
+    'products.sub': 'Hand-picked pieces from the current drop. Hover any item to try it on with AI.',
+    'products.viewall': 'View entire collection',
+    'about.eyebrow': '— About B\'s Wear',
+    'about.head1': 'Not just worn.', 'about.head2': 'Lived.',
+    'about.body1': 'B\'s Wear is a modern, online lifestyle brand offering stylish activewear and smart-casual clothing for young, ambitious individuals. Beyond the cloth, we represent a community — a space where elegance meets performance.',
+    'about.body2': 'Every piece is engineered to elevate confidence, communicate status, and empower you to navigate life with effortless style.',
+    'about.stat1': 'Members', 'about.stat2': 'Drops', 'about.stat3': 'Rating',
+    'coll.title1': 'Two seasons,', 'coll.title2': 'one identity.',
+    'coll.sub': 'Year-round wardrobes engineered for the city and beyond.',
+    'coll.summer.eyebrow': 'Drop 03 / Summer',
+    'coll.summer.title1': 'Sun', 'coll.summer.title2': 'soaked.',
+    'coll.summer.cta': 'Shop summer',
+    'coll.winter.eyebrow': 'Drop 04 / Winter',
+    'coll.winter.title1': 'Cold', 'coll.winter.title2': 'silhouette.',
+    'coll.winter.cta': 'Shop winter',
+    'val.1.t': 'Free Delivery', 'val.1.s': 'On orders over 30 JD',
+    'val.2.t': 'Cash on Delivery', 'val.2.s': 'Pay when it arrives',
+    'val.3.t': '7-Day Returns', 'val.3.s': 'Easy exchange policy',
+    'val.4.t': 'AI Try-On', 'val.4.s': 'See before you buy',
+    'news.head1': 'Join the', 'news.head2': 'exclusive club.',
+    'news.sub': 'Early drops. Member pricing. AI Try-On previews. Once a month, never spam.',
+    'news.placeholder': 'your@email.com', 'news.cta': 'Join',
+    'foot.brand': 'Modern lifestyle apparel for the ambitious. Crafted in spirit, engineered for movement.',
+    'foot.shop': 'Shop', 'foot.help': 'Help', 'foot.club': 'Club',
+    'foot.shop.1': 'All products', 'foot.shop.2': 'Summer collection', 'foot.shop.3': 'Winter collection', 'foot.shop.4': 'Sale',
+    'foot.help.1': 'Shipping & delivery', 'foot.help.2': 'Returns & exchanges', 'foot.help.3': 'Size guide', 'foot.help.4': 'FAQ',
+    'foot.club.1': 'About B\'s Wear', 'foot.club.2': 'AI Try-On', 'foot.club.3': 'Contact', 'foot.club.4': 'Press',
+    'foot.rights': 'All rights reserved.', 'foot.crafted': 'Crafted in Amman · Worn worldwide',
+    'fab': 'Try with AI',
+    'modal.preview.empty': 'Your preview will appear here',
+    'modal.loading': 'Generating your look', 'modal.loading.sub': 'This usually takes 2-5 seconds',
+    'modal.eyebrow': 'AI Try-On · Beta',
+    'modal.title1': 'Try it on', 'modal.title2': 'virtually.',
+    'modal.sub': 'Three quick steps to see yourself in any B\'s Wear piece.',
+    'modal.s1.label': 'Step 01',
+    'modal.s1.q': 'Upload a clear photo of yourself',
+    'modal.s1.h': 'A front-facing photo with good lighting works best. Your image is processed securely and never shared.',
+    'modal.upload.title': 'Drop your photo here or click to browse',
+    'modal.upload.sub': 'JPG, PNG · max 10MB',
+    'modal.tip1': 'Face camera, full upper body',
+    'modal.tip2': 'Plain background preferred',
+    'modal.tip3': 'Natural daylight is best',
+    'modal.tip4': 'Wear fitted clothing',
+    'modal.next': 'Continue',
+    'modal.s2.label': 'Step 02',
+    'modal.s2.q': 'Pick a piece to try on',
+    'modal.s2.h': 'Browse the current drop. You can change selection at any time.',
+    'modal.generate': 'Generate look',
+    'modal.s3.label': 'Step 03 · Result',
+    'modal.s3.q': 'Looks good on you ✦',
+    'modal.s3.h': 'Generated by AI. Actual fit may vary slightly. Add to cart or try a different piece.',
+    'modal.tryanother': 'Try another',
+    'modal.addcart': 'Add to cart'
+  },
+  ar: {
+    'util.delivery': 'توصيل مجاني فوق 30 د.أ',
+    'util.cod': 'الدفع عند الاستلام',
+    'util.ship': 'شحن لكل المملكة',
+    'nav.shop': 'المتجر', 'nav.collections': 'الكولكشن', 'nav.tryon': 'جربها بالـ AI',
+    'nav.about': 'عنا', 'nav.contact': 'تواصل',
+    'hero.pill': "كولكشن صيف '26", 'hero.live': 'متاح الآن',
+    'hero.stand': 'كون', 'hero.out': 'مختلف.',
+    'hero.tag': 'عيش ستايلك، مش الترند.',
+    'hero.sub': 'براند أزياء عصري للأشخاص الطموحين. قطع سمارت كاجوال وأكتيف وير، مصممة لتعزز ثقتك وترافقك في كل تفاصيل حياتك.',
+    'hero.cta1': 'تسوّق الكولكشن', 'hero.cta2': 'جرّب بالـ AI',
+    'hero.float1': 'الأكثر مبيعاً', 'hero.float2': 'تجربة AI',
+    'marquee': 'كون مختلف',
+    'tryon.eyebrow': 'مدعوم بالذكاء الاصطناعي · أول من نوعه',
+    'tryon.head1': 'شوف القطعة عليك', 'tryon.head2': 'قبل ما تشتري.',
+    'tryon.body': 'ارفع صورتك، اختار أي قطعة من الكتالوج، والـ AI رح يولّد لك صورة واقعية وأنت لابسها — بثواني. بدون غرفة قياس، بدون شك. ثقة كاملة.',
+    'tryon.step1': 'ارفع صورتك', 'tryon.step2': 'اختار القطعة', 'tryon.step3': 'شوف ستايلك',
+    'tryon.cta': 'ابدأ التجربة',
+    'products.title1': 'الأكثر', 'products.title2': 'تقييماً.',
+    'products.sub': 'قطع منتقاة من كولكشن هالموسم. مرّر فوق أي قطعة لتجربها بالـ AI.',
+    'products.viewall': 'شاهد كل المنتجات',
+    'about.eyebrow': '— عن B\'s Wear',
+    'about.head1': 'مش بس بتلبسها.', 'about.head2': 'بتعيشها.',
+    'about.body1': 'B\'s Wear هو براند أزياء عصري يقدم قطع أكتيف وير وسمارت كاجوال للشباب الطموحين. أكثر من قماش، إحنا مجتمع — مساحة تجمع الأناقة بالأداء.',
+    'about.body2': 'كل قطعة مصممة لتعزز ثقتك، تعكس مكانتك، وتمنحك حرية التحرك بأسلوب لا يضاهى.',
+    'about.stat1': 'عضو', 'about.stat2': 'كولكشن', 'about.stat3': 'تقييم',
+    'coll.title1': 'موسمين،', 'coll.title2': 'هوية واحدة.',
+    'coll.sub': 'خزانة لكل أيام السنة، مصممة للمدينة وما وراءها.',
+    'coll.summer.eyebrow': 'الإطلاق 03 / صيف',
+    'coll.summer.title1': 'شمس', 'coll.summer.title2': 'دافية.',
+    'coll.summer.cta': 'تسوّق الصيف',
+    'coll.winter.eyebrow': 'الإطلاق 04 / شتاء',
+    'coll.winter.title1': 'صقيع', 'coll.winter.title2': 'أنيق.',
+    'coll.winter.cta': 'تسوّق الشتاء',
+    'val.1.t': 'توصيل مجاني', 'val.1.s': 'للطلبات فوق 30 د.أ',
+    'val.2.t': 'الدفع عند الاستلام', 'val.2.s': 'ادفع لما يوصلك',
+    'val.3.t': 'إرجاع خلال 7 أيام', 'val.3.s': 'سياسة تبديل سهلة',
+    'val.4.t': 'تجربة AI', 'val.4.s': 'شوف قبل ما تشتري',
+    'news.head1': 'انضم لـ', 'news.head2': 'النادي الحصري.',
+    'news.sub': 'إطلاقات حصرية. أسعار خاصة. تجربة AI سابقة. مرة بالشهر فقط، بدون إزعاج.',
+    'news.placeholder': 'بريدك الإلكتروني', 'news.cta': 'انضم',
+    'foot.brand': 'أزياء عصرية للأشخاص الطموحين. مصممة بروح، مهندسة للحركة.',
+    'foot.shop': 'المتجر', 'foot.help': 'مساعدة', 'foot.club': 'النادي',
+    'foot.shop.1': 'كل المنتجات', 'foot.shop.2': 'كولكشن الصيف', 'foot.shop.3': 'كولكشن الشتاء', 'foot.shop.4': 'تخفيضات',
+    'foot.help.1': 'الشحن والتوصيل', 'foot.help.2': 'الإرجاع والتبديل', 'foot.help.3': 'دليل المقاسات', 'foot.help.4': 'الأسئلة الشائعة',
+    'foot.club.1': 'عن B\'s Wear', 'foot.club.2': 'تجربة AI', 'foot.club.3': 'تواصل معنا', 'foot.club.4': 'الإعلام',
+    'foot.rights': 'جميع الحقوق محفوظة.', 'foot.crafted': 'صُنع في عمّان · يُلبس حول العالم',
+    'fab': 'جرب بالـ AI',
+    'modal.preview.empty': 'صورتك رح تظهر هون',
+    'modal.loading': 'جاري توليد ستايلك', 'modal.loading.sub': 'عادة بتاخذ 2-5 ثواني',
+    'modal.eyebrow': 'تجربة AI · بيتا',
+    'modal.title1': 'جرّب القطعة', 'modal.title2': 'افتراضياً.',
+    'modal.sub': 'ثلاث خطوات سريعة وشوف حالك بأي قطعة من B\'s Wear.',
+    'modal.s1.label': 'الخطوة 01',
+    'modal.s1.q': 'ارفع صورة واضحة لإلك',
+    'modal.s1.h': 'صورة من الأمام مع إضاءة جيدة بتعطي أفضل نتيجة. صورتك بتنعالج بأمان وما بتنشارك.',
+    'modal.upload.title': 'اسحب صورتك هون أو اضغط للتصفح',
+    'modal.upload.sub': 'JPG, PNG · الحد الأقصى 10MB',
+    'modal.tip1': 'وجّه الكاميرا، الجزء العلوي كامل',
+    'modal.tip2': 'يفضّل خلفية بسيطة',
+    'modal.tip3': 'إضاءة طبيعية أفضل',
+    'modal.tip4': 'البس قطعة ضيقة',
+    'modal.next': 'التالي',
+    'modal.s2.label': 'الخطوة 02',
+    'modal.s2.q': 'اختار قطعة لتجربتها',
+    'modal.s2.h': 'تصفّح الكولكشن. تقدر تغيّر اختيارك بأي وقت.',
+    'modal.generate': 'توليد الصورة',
+    'modal.s3.label': 'الخطوة 03 · النتيجة',
+    'modal.s3.q': 'بتلبقلك ✦',
+    'modal.s3.h': 'مولّدة بالـ AI. القياس الفعلي قد يختلف قليلاً. ضيف للسلة أو جرّب قطعة ثانية.',
+    'modal.tryanother': 'جرّب قطعة ثانية',
+    'modal.addcart': 'أضف للسلة'
+  }
+};
+
+/* =========================================================================
+   STATE
+   ========================================================================= */
+const state = {
+  lang: 'en',
+  currentStep: 1,
+  userPhotoData: null,    // base64 data URL of uploaded user photo
+  selectedProduct: null,  // product object
+  resultImage: null       // generated try-on image URL
+};
+
+/* =========================================================================
+   I18N APPLICATION
+   ========================================================================= */
+function applyLanguage(lang) {
+  state.lang = lang;
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+  // text content
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key]) el.textContent = i18n[lang][key];
+  });
+  // placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (i18n[lang][key]) el.setAttribute('placeholder', i18n[lang][key]);
+  });
+
+  // toggle active button
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-lang-set') === lang);
+  });
+
+  // re-render product-driven UI to apply translated names
+  renderProducts();
+  renderProductPicker();
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang-set')));
+});
+
+/* =========================================================================
+   PRODUCT GRID RENDERING
+   ========================================================================= */
+function renderProducts() {
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML = products.map(p => {
+    const name = p.name[state.lang] || p.name.en;
+    const type = p.type[state.lang] || p.type.en;
+    const badgeHtml = p.badge
+      ? `<span class="product-badge ${p.badge.toLowerCase()}">${p.badge}</span>`
+      : '';
+    const priceHtml = p.originalPrice
+      ? `<span class="original">${p.originalPrice.toFixed(3)} JD</span><span class="now">${p.price.toFixed(3)} JD</span>`
+      : `<span>${p.price.toFixed(3)} JD</span>`;
+    return `
+      <div class="product-card" data-id="${p.id}">
+        <div class="product-img-wrap">
+          ${badgeHtml}
+          <div class="product-img" style="background-image: url('${p.image}');"></div>
+          <span class="product-quick">Quick view</span>
+          <button class="product-tryon-btn" onclick="event.stopPropagation(); openTryOnWith('${p.id}')" title="Try with AI">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 2v3M15 2v3M3 9h18"/>
+              <rect x="3" y="5" width="18" height="16" rx="2"/>
+              <path d="M8 14l3-3 2 2 3-3"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <div class="product-info-left">
+            <div class="product-name">${name}</div>
+            <div class="product-meta">${type}</div>
+          </div>
+          <div class="product-price">${priceHtml}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+/* =========================================================================
+   PRODUCT PICKER (inside try-on modal)
+   ========================================================================= */
+function renderProductPicker() {
+  const picker = document.getElementById('productPicker');
+  picker.innerHTML = products.map(p => {
+    const name = p.name[state.lang] || p.name.en;
+    const isSelected = state.selectedProduct?.id === p.id;
+    return `
+      <div class="picker-card ${isSelected ? 'selected' : ''}"
+           style="background-image: url('${p.image}');"
+           data-id="${p.id}"
+           onclick="selectProduct('${p.id}')">
+        <div class="picker-card-label">
+          ${name}
+          <span>${p.price.toFixed(3)} JD</span>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function selectProduct(id) {
+  state.selectedProduct = products.find(p => p.id === id);
+  renderProductPicker();
+  const nextBtn = document.getElementById('step2Next');
+  nextBtn.disabled = false;
+  nextBtn.style.opacity = '1';
+  nextBtn.style.pointerEvents = 'auto';
+}
+
+/* =========================================================================
+   TRY-ON MODAL CONTROL
+   ========================================================================= */
+function openTryOn() {
+  document.getElementById('tryonModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  goToStep(1);
+}
+
+function openTryOnWith(productId) {
+  state.selectedProduct = products.find(p => p.id === productId);
+  openTryOn();
+  // if user already uploaded a photo, advance to step 2 with this product picked
+  if (state.userPhotoData) {
+    goToStep(2);
+    renderProductPicker();
+    document.getElementById('step2Next').disabled = false;
+    document.getElementById('step2Next').style.opacity = '1';
+    document.getElementById('step2Next').style.pointerEvents = 'auto';
+  }
+}
+
+function closeTryOn() {
+  document.getElementById('tryonModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function goToStep(n) {
+  state.currentStep = n;
+  for (let i = 1; i <= 3; i++) {
+    document.getElementById(`step${i}`).classList.toggle('active', i === n);
+    const bar = document.getElementById(`bar${i}`);
+    bar.classList.toggle('done', i < n);
+    bar.classList.toggle('active', i === n);
+  }
+  if (n === 2) renderProductPicker();
+}
+
+/* close on outside click */
+document.getElementById('tryonModal').addEventListener('click', (e) => {
+  if (e.target.id === 'tryonModal') closeTryOn();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeTryOn();
+});
+
+/* =========================================================================
+   USER PHOTO UPLOAD
+   ========================================================================= */
+const uploadZone = document.getElementById('uploadZone');
+const userPhotoInput = document.getElementById('userPhoto');
+
+uploadZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  uploadZone.classList.add('dragover');
+});
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+uploadZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  uploadZone.classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file) handlePhotoUpload(file);
+});
+
+userPhotoInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) handlePhotoUpload(file);
+});
+
+function handlePhotoUpload(file) {
+  if (!file.type.startsWith('image/')) {
+    alert('Please upload a valid image file');
+    return;
+  }
+  if (file.size > 10 * 1024 * 1024) {
+    alert('Maximum file size is 10MB');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    state.userPhotoData = e.target.result;
+    showPreviewImage(state.userPhotoData, 'YOU');
+    const nextBtn = document.getElementById('step1Next');
+    nextBtn.disabled = false;
+    nextBtn.style.opacity = '1';
+    nextBtn.style.pointerEvents = 'auto';
+    nextBtn.onclick = () => goToStep(2);
+  };
+  reader.readAsDataURL(file);
+}
+
+function showPreviewImage(src, tag) {
+  const img = document.getElementById('previewImg');
+  const empty = document.getElementById('previewEmpty');
+  const tagEl = document.getElementById('previewTag');
+  img.src = src;
+  img.style.display = 'block';
+  empty.style.display = 'none';
+  tagEl.style.display = 'block';
+  tagEl.textContent = tag;
+  tagEl.className = 'preview-tag' + (tag === 'AI GENERATED' ? ' ai' : '');
+  document.getElementById('previewFrame').classList.toggle('has-result', tag === 'AI GENERATED');
+}
+
+/* =========================================================================
+   AI TRY-ON GENERATION
+   --------------------------------------------------------------------------
+   👇 SWAP THIS FUNCTION WITH THE REAL API CALL.
+   You can plug in any virtual try-on API such as:
+     - Replicate (e.g. cuuupid/idm-vton, viktor-fairy-tales/cat-vton)
+     - Kling AI Try-On
+     - FASHN.AI Try-On API
+     - Google Vertex AI Imagen Try-On
+     - Hugging Face Spaces / Inference Endpoints
+
+   The expected contract:
+     INPUT:  user photo (base64 data URL or File) + product image URL
+     OUTPUT: an image URL (or base64 data URL) of the user wearing the garment
+   ========================================================================= */
+async function generateTryOn(userPhotoBase64, productImageUrl) {
+  /* ----------- REAL API EXAMPLE (commented) -----------
+  const response = await fetch('https://YOUR-API-ENDPOINT/tryon', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer YOUR_API_KEY'
+    },
+    body: JSON.stringify({
+      person_image: userPhotoBase64,
+      garment_image: productImageUrl,
+      category: 'upper_body'   // or lower_body / full_body
+    })
+  });
+  const data = await response.json();
+  return data.output_image_url;
+  ------------------------------------------------------ */
+
+  // DEMO MODE: simulate processing time and return the product image
+  // (replace this with the real call above)
+  await new Promise(r => setTimeout(r, 2800));
+  return productImageUrl;
+}
+
+async function generateTryOnResult() {
+  if (!state.userPhotoData || !state.selectedProduct) return;
+
+  goToStep(3);
+  document.getElementById('previewLoading').classList.add('active');
+
+  try {
+    const resultUrl = await generateTryOn(state.userPhotoData, state.selectedProduct.image);
+    state.resultImage = resultUrl;
+    showPreviewImage(resultUrl, 'AI GENERATED');
+    renderResultSummary();
+  } catch (err) {
+    console.error('Try-on failed:', err);
+    alert('Sorry, generation failed. Please try again.');
+    goToStep(2);
+  } finally {
+    document.getElementById('previewLoading').classList.remove('active');
+  }
+}
+
+function renderResultSummary() {
+  const p = state.selectedProduct;
+  const name = p.name[state.lang] || p.name.en;
+  const type = p.type[state.lang] || p.type.en;
+  document.getElementById('resultSummary').innerHTML = `
+    <div class="result-summary-thumb" style="background-image: url('${p.image}');"></div>
+    <div class="result-summary-info">
+      <strong>${name}</strong>
+      <span>${type}</span>
+    </div>
+    <div class="result-summary-price">${p.price.toFixed(3)} JD</div>
+  `;
+}
+
+function addToCartFromTryOn() {
+  alert(`✦ ${state.selectedProduct.name[state.lang]} added to cart`);
+  closeTryOn();
+}
+
+/* =========================================================================
+   SCROLL-TRIGGERED FADE-IN
+   ========================================================================= */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+/* =========================================================================
+   APPLY PLACEHOLDER BACKGROUNDS to static decorative elements
+   ========================================================================= */
+function userPortraitSVG() {
+  // an elegant abstract figure silhouette (so AI Try-On demo doesn't need a real photo)
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="up-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#262320"/>
+        <stop offset="100%" stop-color="#1a1714"/>
+      </linearGradient>
+      <radialGradient id="up-glow" cx="50%" cy="35%" r="40%">
+        <stop offset="0%" stop-color="#e8a679" stop-opacity="0.18"/>
+        <stop offset="100%" stop-color="#e8a679" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="600" height="800" fill="url(#up-bg)"/>
+    <rect width="600" height="800" fill="url(#up-glow)"/>
+    <!-- abstract figure: head + shoulders silhouette -->
+    <g transform="translate(300 0)" fill="#2f2a23">
+      <ellipse cx="0" cy="320" rx="78" ry="92"/>
+      <path d="M -180 800 Q -180 540 -120 470 Q -50 430 0 430 Q 50 430 120 470 Q 180 540 180 800 Z"/>
+    </g>
+    <!-- soft rim light -->
+    <g transform="translate(300 0)" fill="none" stroke="#3a342c" stroke-width="1.2">
+      <ellipse cx="0" cy="320" rx="78" ry="92"/>
+      <path d="M -180 800 Q -180 540 -120 470 Q -50 430 0 430 Q 50 430 120 470 Q 180 540 180 800"/>
+    </g>
+    <text x="40" y="58" font-family="ui-monospace, Menlo, monospace" font-size="11" letter-spacing="3" fill="#d97133">— UPLOAD YOUR PHOTO</text>
+    <text x="40" y="750" font-family="ui-monospace, Menlo, monospace" font-size="10" letter-spacing="4" fill="#8a8275">YOU · STEP 01</text>
+  </svg>`;
+  return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg.replace(/\s+/g, ' ').trim());
+}
+
+function applyAllPlaceholders() {
+  // 1. Decorative placeholders (hero, editorial, collections)
+  document.querySelectorAll('[data-placeholder]').forEach(el => {
+    try {
+      const config = JSON.parse(el.getAttribute('data-placeholder'));
+      el.style.backgroundImage = `url("${placeholderSVG(config)}")`;
+      el.style.backgroundSize = 'cover';
+      el.style.backgroundPosition = 'center';
+    } catch (e) { console.warn('Bad placeholder config', e); }
+  });
+  
+  // 2. Product thumbnails (hero tag, tryon visual result card)
+  document.querySelectorAll('[data-product-thumb]').forEach(el => {
+    const id = el.getAttribute('data-product-thumb');
+    const product = products.find(p => p.id === id);
+    if (product) {
+      el.style.backgroundImage = `url("${product.image}")`;
+      el.style.backgroundSize = 'cover';
+      el.style.backgroundPosition = 'center';
+    }
+  });
+  
+  // 3. User portrait for AI Try-On demo
+  document.querySelectorAll('[data-user-portrait]').forEach(el => {
+    el.style.backgroundImage = `url("${userPortraitSVG()}")`;
+    el.style.backgroundSize = 'cover';
+    el.style.backgroundPosition = 'center';
+  });
+}
+
+/* =========================================================================
+   INIT
+   ========================================================================= */
+applyAllPlaceholders();
+renderProducts();
+applyLanguage('en');
+
+// trigger initial in-view fades
+setTimeout(() => {
+  document.querySelectorAll('.hero .fade-in').forEach(el => el.classList.add('in'));
+}, 100);
+</script>
+
+</body>
+</html>
